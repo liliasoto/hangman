@@ -1,0 +1,33 @@
+div {
+    text-align: center;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    font-size: 25px;
+}
+
+input {
+    padding: 5px 10px;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 25px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
