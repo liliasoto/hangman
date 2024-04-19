@@ -3,21 +3,28 @@ import "../css/hangman.css"
 
 interface HangmanProps {
     words: string[];
+    //Colocamos la categoría como uno de los props de HangmanProps
     category: string;
 }
 
+//Agregamos la categoría
 const Hangman = ({words, category}: HangmanProps) => {
-    const [gameStarted, setGameStarted] = useState(false);
+    const [gameStarted, setGameStarted] = useState(false); //Agregué una nueva const que diga si el juego se empezó o no
     const [selectedWord, setSelectedWord] = useState(words[0]);
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
     const [errorCount, setErrorCount] = useState(0);
 
+    //Ahora hice una función flecha para que al presionar el botón se inicie el juego
     const startGame = () => {
+        //Dejamos la const setGameStarted como true para que se muestre el juego
         setGameStarted(true);
+        //Tomamos un número random para seleccionar una palabra random inicial de la lista
         const randomIndex = Math.floor(Math.random() * words.length);
         setSelectedWord(words[randomIndex]);
     };
 
+    //Con esta condición hacemos que si no se ha iniciado el juego se muestre SOLO la pista y el botón
+    //Ya que se haga clic en el botón se inicia el juego y se muestra lo demás (desaparece el botón)
     if (!gameStarted) {
         return (
             <div>
@@ -28,12 +35,12 @@ const Hangman = ({words, category}: HangmanProps) => {
     }
 
     const displayWord = selectedWord.split('').map((letter, index) => {
-        console.log("selectedWord: ", selectedWord) 
-        if (index === 0 || guessedLetters.includes(letter)) {
-            console.log("guessedLetters: ", guessedLetters);
-            return letter;
+        console.log("selectedWord: ", selectedWord)
+        if (guessedLetters.includes(letter)) {
+          console.log("guessedLetters: ",guessedLetters)
+          return letter;
         } else {
-            return '_';
+          return '_';
         }
     });
 
