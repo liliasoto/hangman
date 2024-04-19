@@ -7,9 +7,25 @@ interface HangmanProps {
 }
 
 const Hangman = ({words, category}: HangmanProps) => {
+    const [gameStarted, setGameStarted] = useState(false);
     const [selectedWord, setSelectedWord] = useState(words[0]);
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
     const [errorCount, setErrorCount] = useState(0);
+
+    const startGame = () => {
+        setGameStarted(true);
+        const randomIndex = Math.floor(Math.random() * words.length);
+        setSelectedWord(words[randomIndex]);
+    };
+
+    if (!gameStarted) {
+        return (
+            <div>
+                <p>{category}</p>
+                <button onClick={startGame}>Play</button>
+            </div>
+        );
+    }
 
     const displayWord = selectedWord.split('').map((letter, index) => {
         console.log("selectedWord: ", selectedWord) 
