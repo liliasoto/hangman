@@ -3,16 +3,17 @@ import "../css/hangman.css"
 
 interface HangmanProps {
     words: string[];
+    category: string;
 }
 
-const Hangman = ({words}: HangmanProps) => {
+const Hangman = ({words, category}: HangmanProps) => {
     const [selectedWord, setSelectedWord] = useState(words[0]);
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
     const [errorCount, setErrorCount] = useState(0);
 
     const displayWord = selectedWord.split('').map((letter, index) => {
-        console.log("selectedWord: ", selectedWord)
-        if(guessedLetters.includes(letter)){
+        console.log("selectedWord: ", selectedWord) 
+        if (index === 0 || guessedLetters.includes(letter)) {
             console.log("guessedLetters: ", guessedLetters);
             return letter;
         } else {
@@ -40,6 +41,7 @@ const Hangman = ({words}: HangmanProps) => {
 
     return (
         <div>
+            <p>{category}</p>
             <p>{displayWord.join(' ')}</p>
             <input maxLength={1} onChange={(e) => handleGuess(e.target.value)}></input>
             {(displayWord.join('') === selectedWord || errorCount > 5) && (
