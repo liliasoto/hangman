@@ -1,8 +1,10 @@
 import Welcome from './components/Welcome.tsx';
 import Hangman from './components/Hangman.tsx';
+import { Outlet } from 'react-router-dom';
+import { WinCountProvider } from './components/WinCountContext.tsx';
+import { useState } from 'react';
 
 function App(){
-
     //Agregué la función para elegir una lista random
     function chooseRandomListWithCategory() {
         //Agruegué la const lists, que tiene las 5 listas, cada una con una categoría y la respectiva lista
@@ -23,12 +25,19 @@ function App(){
     const { category, words } = chooseRandomListWithCategory();
     console.log("Category:", category);
     console.log("Words:", words);
+
     
     return(
-        <div className='App'>
-            <Welcome/>
-            <Hangman words={words} category={category}/>
-        </div>
+        <WinCountProvider>
+            <div className='App'>
+                <Welcome/>
+                <Hangman 
+                    words={words} 
+                    category={category}
+                />
+                <Outlet />
+            </div>
+        </WinCountProvider>
     );
 }
 

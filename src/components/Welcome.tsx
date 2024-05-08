@@ -19,7 +19,7 @@ export default function Welcome(){
           clearInterval(key);
         };
       }, [])
-
+    
     return(
         <>
             <div className="wrapper">
