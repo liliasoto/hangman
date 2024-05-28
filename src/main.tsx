@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         element: <DefaultComponent/>
       },
       {
-        path: "myscore",
+        path: "/myscore",
         element: <MyScore/>
       }
     ]
