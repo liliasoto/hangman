@@ -20,7 +20,6 @@ const Hangman = ({words, category }: HangmanProps) => {
     const [selectedWord, setSelectedWord] = useState(words[0]);
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
     const [errorCount, setErrorCount] = useState(0);
-    const [winCount, setWinCount] = useState(0); // Estado para contar las victorias
 
     // Ahora hice una función flecha para que al presionar el botón se inicie el juego
     const startGame = () => {
@@ -42,7 +41,7 @@ const Hangman = ({words, category }: HangmanProps) => {
         );
     }
 
-    const displayWord = selectedWord.split('').map((letter, index) => {
+    const displayWord = selectedWord.split('').map((letter) => {
         console.log("selectedWord: ", selectedWord)
         if (guessedLetters.includes(letter)) {
             console.log("guessedLetters: ",guessedLetters)

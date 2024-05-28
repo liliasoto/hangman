@@ -2,7 +2,6 @@ import Welcome from './components/Welcome.tsx';
 import Hangman from './components/Hangman.tsx';
 import { Outlet } from 'react-router-dom';
 import { WinCountProvider } from './components/WinCountContext.tsx';
-import { useState } from 'react';
 
 function App(){
     //Agregué la función para elegir una lista random
